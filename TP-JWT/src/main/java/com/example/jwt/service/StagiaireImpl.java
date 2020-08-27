@@ -43,6 +43,16 @@ public class StagiaireImpl {
         final Stagiaire updatedStagiaire = stagiaireDao.save(stagiaire);
         return updatedStagiaire;
     }
+	
+	public int update(Stagiaire stagiaire) {
+		// if the product is already in the table and its not the product who will be updated
+		if (stagiaireDao.findByNomAndIdNot(stagiaire.getNom(), stagiaire.getId()) != null) {
+			return -1;
+		} else {
+			stagiaireDao.save(stagiaire);
+			return 1;
+		}
+	}
 
 	public Optional<Stagiaire> findById(Long id) {
 		return stagiaireDao.findById(id);

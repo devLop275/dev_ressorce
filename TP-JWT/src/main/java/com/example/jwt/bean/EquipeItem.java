@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 @Entity
 public class EquipeItem {
@@ -17,13 +18,13 @@ public class EquipeItem {
 	
 	@ManyToOne
 	private Stagiaire stagiaire;
-	
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dateDebut;
-	
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dateFin;
 	
 	private String emCv;
-	
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dateRecuCv;
 	
 	private double note;

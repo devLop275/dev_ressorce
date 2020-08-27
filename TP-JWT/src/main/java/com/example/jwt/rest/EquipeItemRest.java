@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.jwt.bean.Employee;
 import com.example.jwt.bean.EquipeItem;
 import com.example.jwt.bean.Stagiaire;
 import com.example.jwt.service.EquipeItemImpl;
@@ -47,5 +49,9 @@ public class EquipeItemRest {
 		 equipeItemImpl.deleteById(id);
 	}
 	
+	@PutMapping("/update/")
+	public int update(@RequestBody EquipeItem equipeItem) {
+		return equipeItemImpl.update(equipeItem);
+	}
 	
 }

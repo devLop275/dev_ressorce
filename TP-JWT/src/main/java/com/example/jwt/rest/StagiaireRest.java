@@ -63,5 +63,8 @@ public class StagiaireRest {
        return stagiaireService.updateStagiaire(stagiaireId, stagiaireDetails);
     }
 	
-	
+	@PutMapping("/update/")
+	public int update(@RequestBody Stagiaire stagiaire) {
+		return stagiaireService.update(stagiaire);
+	}
 }

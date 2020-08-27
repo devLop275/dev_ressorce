@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.jwt.bean.Employee;
 import com.example.jwt.bean.EquipeItem;
 import com.example.jwt.bean.Stagiaire;
 import com.example.jwt.dao.EquipeItemDao;
@@ -31,6 +32,14 @@ public class EquipeItemImpl {
 		return equipeItemDao.findAll();
 	}
 
-
+	
+  public int update(EquipeItem equipeItem) {
+	  if(equipeItemDao.findByDateDebutAndIdNot(equipeItem.getDateDebut(), equipeItem.getId()) != null) {
+		  return -1;
+	  } else {
+		  equipeItemDao.save(equipeItem);
+		  return 1;
+	  }
+  }
 	
 }
