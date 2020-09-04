@@ -3,11 +3,10 @@ package com.example.jwt.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
+import com.example.jwt.bean.EquipeItem;
 import com.example.jwt.bean.Stage;
-import com.example.jwt.bean.Stagiaire;
+import com.example.jwt.dao.EquipeItemDao;
 import com.example.jwt.dao.StageDao;
 
 @Service
@@ -15,6 +14,9 @@ public class StageImpl {
 	
 	@Autowired
 	private StageDao stageDao;
+	
+	@Autowired
+	private EquipeItemImpl equipeService;
 
 	public Stage save(Stage stage) {
 		return stageDao.save(stage);
@@ -36,5 +38,23 @@ public class StageImpl {
         final Stage updatedStage = stageDao.save(stage);
         return updatedStage;
     }
+	
+	public int saveWithEquipeItems(Stage stage) {
+
+		if (stage == null) {
+			return -1;
+		} else {
+			if (stage.getEquipeItems().isEmpty()) {
+				return -2;
+			} else {
+				stageDao.save(stage);
+				for (EquipeItem equipeItem : stage.getEquipeItems()) {
+					equipeItem.setStage(stage);
+					equipeService.save(equipeItem);
+				}
+				return 1;
+			}
+		}
+	}
 	
 }

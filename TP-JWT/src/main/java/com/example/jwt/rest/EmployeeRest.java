@@ -52,7 +52,7 @@ public class EmployeeRest {
 	
 	@Transactional
 	@DeleteMapping("/delete/")
-	public int delete(Employee employee) {
+	public int delete(@RequestBody Employee employee) {
 		return employeeService.delete(employee);
 	}
 	
