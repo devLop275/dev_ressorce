@@ -30,7 +30,7 @@ public class StageRest {
 	@Autowired
 	private StageImpl stageService;
 
-	@PostMapping("/")
+	@PostMapping("/stage/")
 	public Stage save(@RequestBody Stage stage) {
 		return stageService.save(stage);
 	}
@@ -38,6 +38,11 @@ public class StageRest {
 	@GetMapping("/")
 	public List<Stage> findAll() {
 		return stageService.findAll();
+	}
+	
+	@PostMapping("/")
+	public int saveWithEquipeItems(@RequestBody Stage stage) {
+		return stageService.saveWithEquipeItems(stage);
 	}
 
 	@Transactional

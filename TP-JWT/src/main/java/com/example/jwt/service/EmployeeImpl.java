@@ -36,14 +36,14 @@ public class EmployeeImpl {
 		}
 	}
 	
-	//public int delete(Employee employee) {
-		//if(employee == null) {
-			//return -1;
-		//}else {
-			//employeeDao.delete(employee);
-			//return 1;
-		//}
-	//}
+	public int delete(Employee employee) {
+		if(employee == null) {
+			return -1;
+		}else {
+			employeeDao.delete(employee);
+			return 1;
+		}
+	}
 
 	
 	

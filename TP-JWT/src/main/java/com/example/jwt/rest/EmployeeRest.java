@@ -57,6 +57,12 @@ public class EmployeeRest {
 	//}
 	
 	
+
+	@Transactional
+	@DeleteMapping("/delete/")
+	public int delete(@RequestBody Employee employee) {
+		return employeeService.delete(employee);
+	}
 	
 	@PutMapping("/update/id/{id}")
     public Employee updateEmployee(@PathVariable(value = "id") Long employeeId,
