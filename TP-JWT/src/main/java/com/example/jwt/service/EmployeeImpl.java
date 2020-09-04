@@ -36,15 +36,17 @@ public class EmployeeImpl {
 		}
 	}
 	
-	public int delete(Employee employee) {
-		if(employee == null) {
-			return -1;
-		}else {
-			employeeDao.delete(employee);
-			return 1;
-		}
-	}
+	//public int delete(Employee employee) {
+		//if(employee == null) {
+			//return -1;
+		//}else {
+			//employeeDao.delete(employee);
+			//return 1;
+		//}
+	//}
 
+	
+	
 	public Employee updateEmployee(Long employeeId,Employee employeeDetails) {
         Employee employee = employeeDao.getOne(employeeId);
         employee.setNom(employeeDetails.getNom());
@@ -56,6 +58,10 @@ public class EmployeeImpl {
         return updatedEmployee;
     }
 	
+	//public void deleteById(Long id) {
+		//employeeDao.deleteById(id);
+	//}
+
 	public int update(Employee employee) {
 		// if the product is already in the table and its not the product who will be updated
 		if (employeeDao.findByNomAndIdNot(employee.getNom(), employee.getId()) != null) {

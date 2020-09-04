@@ -18,6 +18,7 @@ public class User implements UserDetails {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+	private String cin;
     private String nom;
     private String prenom;
     private String email;
@@ -42,7 +43,15 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public String getNom() {
+    public String getCin() {
+		return cin;
+	}
+
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
+
+	public String getNom() {
         return nom;
     }
 

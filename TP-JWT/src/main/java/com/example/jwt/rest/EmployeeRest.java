@@ -50,11 +50,13 @@ public class EmployeeRest {
 		return employeeService.deleteById(id);
 	}
 	
-	@Transactional
-	@DeleteMapping("/delete/")
-	public int delete(Employee employee) {
-		return employeeService.delete(employee);
-	}
+	//@Transactional
+	//@DeleteMapping("/delete/")
+	//public int delete(Employee employee) {
+		//return employeeService.delete(employee);
+	//}
+	
+	
 	
 	@PutMapping("/update/id/{id}")
     public Employee updateEmployee(@PathVariable(value = "id") Long employeeId,
@@ -62,6 +64,12 @@ public class EmployeeRest {
        return employeeService.updateEmployee(employeeId, employeeDetails);
     }
 	
+	//@Transactional
+	//@DeleteMapping("/delete/id/{id}")
+	//public void deleteById(@PathVariable Long id) {
+		//employeeService.deleteById(id);
+	//}
+
 	@PutMapping("/update/")
 	public int update(@RequestBody Employee employee) {
 		return employeeService.update(employee);
