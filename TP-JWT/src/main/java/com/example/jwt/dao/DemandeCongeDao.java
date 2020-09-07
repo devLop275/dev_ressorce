@@ -5,7 +5,11 @@ import org.springframework.stereotype.Repository;
 
 import com.example.jwt.bean.DemandeConge;
 
+
 @Repository
 public interface DemandeCongeDao extends JpaRepository<DemandeConge, Long> {
 
+    public void deleteById(Long id);
+	
+	public DemandeConge findByDureeAndIdNot(int duree,Long id);
 }

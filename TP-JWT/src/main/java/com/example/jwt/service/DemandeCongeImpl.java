@@ -22,5 +22,22 @@ public class DemandeCongeImpl {
 		return demandeCongeDao.findAll();
 	}
 	
+	public int deleteById(Long id) {
+		if(id == null) {
+			return -1;
+		}else {
+			//typeCongeDao.delete(typeConge);
+			demandeCongeDao.deleteById(id);
+			return 1;
+		}
+	}
 	
+	public int update(DemandeConge demandeConge) {
+		if(demandeCongeDao.findByDureeAndIdNot(demandeConge.getDuree(), demandeConge.getId()) != null ) {
+			return -1;
+		} else {
+			demandeCongeDao.save(demandeConge);
+			return 1;
+		}
+	}
 }
