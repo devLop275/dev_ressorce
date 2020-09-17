@@ -1,5 +1,6 @@
 package com.example.jwt.rest;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.jwt.bean.DemandeConge;
 import com.example.jwt.service.DemandeCongeImpl;
@@ -25,16 +29,29 @@ public class DemandeCongeRest {
 	@Autowired
 	private DemandeCongeImpl demandeCongeImpl;
 
+	
+	//public DemandeConge save(@RequestBody DemandeConge demandeConge,@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+		
+		//return demandeCongeImpl.save(demandeConge,file);
+	//}
+	
 	@PostMapping("/")
-	public DemandeConge save(@RequestBody DemandeConge demandeConge) {
-		return demandeCongeImpl.save(demandeConge);
+	public DemandeConge save(@RequestBody DemandeConge demandeConge, @RequestParam("file") MultipartFile file) {
+		return demandeCongeImpl.save(demandeConge, file);
 	}
+
+
+	//public DemandeConge save(@RequestBody DemandeConge demandeConge) {
+		//return demandeCongeImpl.save(demandeConge);
+	//}
 
 	@GetMapping("/")
 	public List<DemandeConge> findAll() {
 		return demandeCongeImpl.findAll();
 	}
 	
+
+
 	@Transactional
 	@DeleteMapping("/delete/id/{id}")
 	public int delete(@PathVariable Long id) {
