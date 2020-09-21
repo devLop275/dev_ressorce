@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.jwt.bean.Employee;
@@ -16,8 +17,11 @@ public class StagiaireImpl {
 
 	@Autowired
 	private StagiaireDao stagiaireDao;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public Stagiaire save(Stagiaire stagiaire) {
+		stagiaire.setPassword(passwordEncoder.encode(stagiaire.getPassword()));
 		return stagiaireDao.save(stagiaire);
 	}
 

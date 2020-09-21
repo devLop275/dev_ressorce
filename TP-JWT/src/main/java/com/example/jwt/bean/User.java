@@ -2,6 +2,8 @@ package com.example.jwt.bean;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -114,6 +116,7 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
+    @JsonIgnore
     @Override
     public String getPassword() {
         return password;

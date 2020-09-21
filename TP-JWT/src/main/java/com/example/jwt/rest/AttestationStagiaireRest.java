@@ -1,5 +1,6 @@
 package com.example.jwt.rest;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.jwt.bean.AttestationStagiaire;
 import com.example.jwt.bean.Stagiaire;
 import com.example.jwt.dao.AttestationStagiareDao;
+import com.example.jwt.service.AttestationStagiaireImpl;
+
+import net.sf.jasperreports.engine.JRException;
 
 @RestController
 @RequestMapping("/tp-jwt/attestationSt")
@@ -25,6 +29,8 @@ public class AttestationStagiaireRest {
 
 	@Autowired
 	private AttestationStagiareDao attestationStagiaireDao;
+	@Autowired
+	private AttestationStagiaireImpl attestationStagiaireService;
 
 	@PostMapping("/")
 	public AttestationStagiaire save(@RequestBody AttestationStagiaire attestationStagiare) {
@@ -41,10 +47,21 @@ public class AttestationStagiaireRest {
 		return attestationStagiaireDao.findByStagiaire(stagiaire);
 	}
 
+	@GetMapping("/find/nom/{nom}")
+	public Object findStageAndEquipeItemAndStagiaireByNom(@PathVariable String nom) {
+		return attestationStagiaireService.findStageAndEquipeItemAndStagiaireByNom(nom);
+	}
+
 	@Transactional
 	@DeleteMapping("/delete/id/{id}")
 	public void deleteById(@PathVariable Long id) {
-		 attestationStagiaireDao.deleteById(id);
+		attestationStagiaireDao.deleteById(id);
+	}
+
+	@GetMapping("/report/{format}/nom/{nom}")
+	public String generateReport(@PathVariable String format, @PathVariable String nom)
+			throws FileNotFoundException, JRException {
+		return attestationStagiaireService.exportReport(format, nom);
 	}
 
 }
