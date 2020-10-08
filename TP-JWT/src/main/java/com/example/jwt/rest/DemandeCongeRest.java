@@ -1,6 +1,5 @@
 package com.example.jwt.rest;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -21,6 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.jwt.bean.DemandeConge;
 import com.example.jwt.service.DemandeCongeImpl;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 @RestController
 @RequestMapping("/tp-jwt/demandeConge")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -30,26 +31,35 @@ public class DemandeCongeRest {
 	private DemandeCongeImpl demandeCongeImpl;
 
 	
-	//public DemandeConge save(@RequestBody DemandeConge demandeConge,@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
-		
-		//return demandeCongeImpl.save(demandeConge,file);
-	//}
-	
-	@PostMapping("/")
-	public DemandeConge save(@RequestBody DemandeConge demandeConge, @RequestParam("file") MultipartFile file) {
-		return demandeCongeImpl.save(demandeConge, file);
-	}
 
 
+	/*
+	 * @PostMapping("/") public DemandeConge save(@RequestBody DemandeConge
+	 * demandeConge,@RequestParam("file") MultipartFile file) throws
+	 * JsonParseException , JsonMappingException , Exception { return
+	 * demandeCongeImpl.save(demandeConge, file); }
+	 */
+
+
+
+	//@PostMapping("/")
 	//public DemandeConge save(@RequestBody DemandeConge demandeConge) {
 		//return demandeCongeImpl.save(demandeConge);
 	//}
 
+	
+	
+	
 	@GetMapping("/")
 	public List<DemandeConge> findAll() {
 		return demandeCongeImpl.findAll();
 	}
 	
+
+    @PostMapping("/")
+    public DemandeConge save(@RequestBody DemandeConge demandeConge,@RequestParam("file") MultipartFile file) throws JsonParseException, JsonMappingException, Exception {
+		return demandeCongeImpl.save(demandeConge);
+	}
 
 
 	@Transactional
@@ -58,6 +68,9 @@ public class DemandeCongeRest {
 		return demandeCongeImpl.deleteById(id);
 	}
 	
+	
+
+
 	@PutMapping("/update/")
 	public int update(@RequestBody DemandeConge demandeConge) {
 		return demandeCongeImpl.update(demandeConge);
