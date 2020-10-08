@@ -22,6 +22,7 @@ public class AttestationStagiaire {
 	private String departement;
 	private String designation;
 	
+	//attestation
 	public AttestationStagiaire(String nomEnc, String prenomEnc, Date dateDebut, Date dateFin, String nomSt,
 			String prenomSt, String departement, String designation) {
 		super();
