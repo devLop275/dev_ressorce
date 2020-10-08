@@ -35,19 +35,29 @@ public class DemandeCongeRest {
 		//return demandeCongeImpl.save(demandeConge,file);
 	//}
 	
-	@PostMapping("/")
-	public DemandeConge save(@RequestBody DemandeConge demandeConge, @RequestParam("file") MultipartFile file) {
-		return demandeCongeImpl.save(demandeConge, file);
-	}
-
+	/*
+	 * @PostMapping("/") public DemandeConge save(@RequestBody DemandeConge
+	 * demandeConge, @RequestParam("file") MultipartFile file) { return
+	 * demandeCongeImpl.save(demandeConge, file); }
+	 */
 
 	//public DemandeConge save(@RequestBody DemandeConge demandeConge) {
 		//return demandeCongeImpl.save(demandeConge);
 	//}
+	
+	@PostMapping("/") 
+	public DemandeConge save(@RequestBody DemandeConge demandeConge) {
+		return demandeCongeImpl.save(demandeConge);
+	}
 
 	@GetMapping("/")
 	public List<DemandeConge> findAll() {
 		return demandeCongeImpl.findAll();
+	}
+	
+	@GetMapping("/count/")
+	public int nbConges() {
+		return demandeCongeImpl.nbConges();
 	}
 	
 

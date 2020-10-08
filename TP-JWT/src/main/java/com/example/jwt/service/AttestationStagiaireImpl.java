@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
@@ -37,34 +38,38 @@ public class AttestationStagiaireImpl {
 		return attestationStagiareDao.findAll();
 	}
 
-	public Object findStageAndEquipeItemAndStagiaireByNom(String nom) {
+	public AttestationStagiaire findStageAndEquipeItemAndStagiaireByNom(String nom) {
 		return attestationStagiareDao.findStageAndEquipeItemAndStagiaireByNom(nom);
 	}
 
-	public AttestationStagiaire findByStagiaire(Stagiaire stagiaire) {
+	/*public AttestationStagiaire findByStagiaire(Stagiaire stagiaire) {
 		return attestationStagiareDao.findByStagiaire(stagiaire);
-	}
+	}*/
 
 	public void deleteById(Long id) {
 		attestationStagiareDao.deleteById(id);
 	}
+	
+	public List<Stagiaire> findStagiaireAndEquipeItem() {
+		return attestationStagiareDao.findStagiaireAndEquipeItem();
+	}
 
 	public String exportReport(String reportFormat, String nom) throws FileNotFoundException, JRException {
-		String path = "/Users/ayoubealhyane/Desktop/Report";
-		Object object = attestationStagiareDao.findStageAndEquipeItemAndStagiaireByNom(nom);
-		System.out.println("----------------" + object); // load file and compile it
+		String path = "src/main/resources/attestationFiles/";
+		AttestationStagiaire attestationSt = attestationStagiareDao.findStageAndEquipeItemAndStagiaireByNom(nom);
+		System.out.println("----------------" + attestationSt); // load file and compile it
 		File file = ResourceUtils.getFile("classpath:attestation_stagiaire.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-		JRBeanArrayDataSource dataSource = new JRBeanArrayDataSource(new Object[] { object });
+		JRBeanArrayDataSource dataSource = new JRBeanArrayDataSource(new AttestationStagiaire[] { attestationSt });
 		System.out.println(dataSource.getData());
 		Map<String, Object> parameters = new HashMap<>();
-		parameters.put("createdBy", "Java Techie");
+		parameters.put("createdBy", "Abderrahim");
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
 		if (reportFormat.equalsIgnoreCase("html")) {
-			JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "/e.html");
+			JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "/"+ attestationSt.getNomSt()+"_"+ attestationSt.getPrenomSt() +".html");
 		}
 		if (reportFormat.equalsIgnoreCase("pdf")) {
-			JasperExportManager.exportReportToPdfFile(jasperPrint, path + "/e.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, path + "/"+ attestationSt.getNomSt()+"_"+ attestationSt.getPrenomSt() +".pdf");
 		}
 
 		return "report generated in path : " + path;

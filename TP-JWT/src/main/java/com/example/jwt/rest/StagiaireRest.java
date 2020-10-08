@@ -50,6 +50,11 @@ public class StagiaireRest {
 	public Optional<Stagiaire> findById(@PathVariable Long id) {
 		return stagiaireService.findById(id);
 	}
+	
+	@GetMapping("/count/")
+	public int nbStagiaire() {
+		return stagiaireService.nbStagiaire();
+	}
 
 	@Transactional
 	@DeleteMapping("/delete/id/{id}")

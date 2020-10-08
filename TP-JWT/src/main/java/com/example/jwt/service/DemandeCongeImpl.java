@@ -35,6 +35,10 @@ public class DemandeCongeImpl {
 			return 1;
 		}
 	}
+	
+	public int nbConges() {
+		return demandeCongeDao.nbConges();
+	}
 
 	public int update(DemandeConge demandeConge) {
 		if (demandeCongeDao.findByDureeAndIdNot(demandeConge.getDuree(), demandeConge.getId()) != null) {
@@ -45,28 +49,30 @@ public class DemandeCongeImpl {
 		}
 	}
 
-	public DemandeConge save(DemandeConge demandeConge,MultipartFile file) {
-		if(demandeConge.getCertificat().isEmpty()) {
-			//redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-			return demandeCongeDao.save(demandeConge);
-		}
-		else {
-			try {
-
-				byte[] bytes = file.getBytes();
-				Path path = Paths.get("C:\\Users\\HP\\git\\dev_ressorce\\TP-JWT\\src\\main\\resources\\uploads\\" + file.getOriginalFilename());
-				Files.write(path, bytes);
-				demandeCongeDao.save(demandeConge);
-
-				//redirectAttributes.addFlashAttribute("message","You successfully uploaded '" + file.getOriginalFilename() + "'");
-
-			} catch (IOException e) {
-				e.printStackTrace();
-				
-			}
-			return demandeCongeDao.save(demandeConge);
-		}
-		
+	/*
+	 * public DemandeConge save(DemandeConge demandeConge,MultipartFile file) {
+	 * if(demandeConge.getCertificat().isEmpty()) {
+	 * //redirectAttributes.addFlashAttribute("message",
+	 * "Please select a file to upload"); return demandeCongeDao.save(demandeConge);
+	 * } else { try {
+	 * 
+	 * byte[] bytes = file.getBytes(); Path path = Paths.get(
+	 * "C:\\Users\\HP\\git\\dev_ressorce\\TP-JWT\\src\\main\\resources\\uploads\\" +
+	 * file.getOriginalFilename()); Files.write(path, bytes);
+	 * demandeCongeDao.save(demandeConge);
+	 * 
+	 * //redirectAttributes.addFlashAttribute(
+	 * "message","You successfully uploaded '" + file.getOriginalFilename() + "'");
+	 * 
+	 * } catch (IOException e) { e.printStackTrace();
+	 * 
+	 * } return demandeCongeDao.save(demandeConge); }
+	 * 
+	 * }
+	 */
+	
+	public DemandeConge save(DemandeConge demandeConge) {
+		return demandeCongeDao.save(demandeConge);
 	}
 
 	

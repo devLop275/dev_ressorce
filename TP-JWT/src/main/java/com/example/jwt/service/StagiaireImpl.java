@@ -62,5 +62,9 @@ public class StagiaireImpl {
 		return stagiaireDao.findById(id);
 	}
 	
+	public int nbStagiaire() {
+		return stagiaireDao.nbStagiaire();
+	}
+	
 	
 }

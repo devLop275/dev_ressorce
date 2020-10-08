@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.jwt.bean.Employee;
+import com.example.jwt.bean.User;
 import com.example.jwt.dao.EmployeeDao;
 import com.example.jwt.service.EmployeeImpl;
+import com.example.jwt.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/tp-jwt/employee")
@@ -28,6 +31,8 @@ public class EmployeeRest {
 
 	@Autowired
 	private EmployeeImpl employeeService;
+	@Autowired
+	private UserServiceImpl userService;
 
 	@PostMapping("/")
 	public Employee save(@RequestBody Employee employee) {
@@ -43,6 +48,12 @@ public class EmployeeRest {
 	public Employee findByNom(@PathVariable String nom) {
 		return employeeService.findByNom(nom);
 	}
+	
+	@GetMapping("/count/")
+	public int nbEmployees() {
+		return employeeService.nbEmployees();
+	}
+
 
 	@Transactional
 	@DeleteMapping("/delete/id/{id}")
@@ -81,5 +92,14 @@ public class EmployeeRest {
 		return employeeService.update(employee);
 	}
 	
+	@GetMapping("/username/{username}")
+	public UserDetails loadUserByUsername(@PathVariable("username") String username) {
+		return userService.loadUserByUsername(username);
+	}
 	
+	@PutMapping("/user/{id}")
+	public ResponseEntity<User> updateEmployee(@PathVariable(value = "id") Long userId,
+	         @Valid @RequestBody User userDetails){
+		return userService.updateEmployee(userId, userDetails);
+	}
 }

@@ -75,6 +75,10 @@ public class EmployeeImpl {
 			return 1;
 		}
 	}
+	
+	public int nbEmployees() {
+		return employeeDao.nbEmployees();
+	}
 
 	
 }

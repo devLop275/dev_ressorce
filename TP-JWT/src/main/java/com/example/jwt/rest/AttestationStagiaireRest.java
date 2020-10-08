@@ -42,10 +42,10 @@ public class AttestationStagiaireRest {
 		return attestationStagiaireDao.findAll();
 	}
 
-	@GetMapping("/find/")
+	/*@GetMapping("/find/")
 	public AttestationStagiaire findByStagiaire(Stagiaire stagiaire) {
 		return attestationStagiaireDao.findByStagiaire(stagiaire);
-	}
+	}*/
 
 	@GetMapping("/find/nom/{nom}")
 	public Object findStageAndEquipeItemAndStagiaireByNom(@PathVariable String nom) {
@@ -56,6 +56,16 @@ public class AttestationStagiaireRest {
 	@DeleteMapping("/delete/id/{id}")
 	public void deleteById(@PathVariable Long id) {
 		attestationStagiaireDao.deleteById(id);
+	}
+	
+	@GetMapping("/findStagiaireAndEquipeItem/")
+	public List<Stagiaire> findStagiaireAndEquipeItem() {
+		return attestationStagiaireService.findStagiaireAndEquipeItem();
+	}
+	
+	@GetMapping("/findStagiaireAndEquipeItemV2/{nom}")
+	public AttestationStagiaire findStageAndEquipeItem(@PathVariable String nom) {
+		return attestationStagiaireService.findStageAndEquipeItemAndStagiaireByNom(nom);
 	}
 
 	@GetMapping("/report/{format}/nom/{nom}")

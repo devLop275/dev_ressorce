@@ -3,7 +3,10 @@ package com.example.jwt.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.jwt.bean.Admin;
 import com.example.jwt.bean.AuthResponse;
@@ -114,5 +120,19 @@ public class UserServiceImpl implements UserDetailsService {
 		return new AuthResponse(JwtUtil.generateToken(userDetails), NumberUtil.toString(userDetails.getId()),
 				userDetails.getNom(), userDetails.getEmail(), roles);
 	}
+	
+    public ResponseEntity<User> updateEmployee(@PathVariable(value = "id") Long userId,
+         @Valid @RequestBody User userDetails) {
+        User user = userDao.getOne(userId);
+        user.setNom(userDetails.getNom());
+        user.setPrenom(userDetails.getPrenom());
+        user.setEmail(userDetails.getEmail());
+        user.setVille(userDetails.getVille());
+        user.setAdresse(userDetails.getAdresse());
+        user.setCin(userDetails.getCin());
+        user.setDatenaissance(userDetails.getDatenaissance());
+        final User updatedUser = userDao.save(user);
+        return ResponseEntity.ok(updatedUser);
+    }
 
 }

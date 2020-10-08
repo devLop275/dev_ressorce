@@ -40,6 +40,11 @@ public class StageRest {
 		return stageService.findAll();
 	}
 	
+	@GetMapping("/count/")
+	public int nbStage() {
+		return stageService.nbStage();
+	}
+	
 	@PostMapping("/")
 	public int saveWithEquipeItems(@RequestBody Stage stage) {
 		return stageService.saveWithEquipeItems(stage);
