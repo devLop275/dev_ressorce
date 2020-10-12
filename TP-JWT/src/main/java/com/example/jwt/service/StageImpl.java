@@ -29,6 +29,10 @@ public class StageImpl {
 	public void deleteById(Long id) {
 	   stageDao.deleteById(id);
 	}
+	
+	public int nbStage() {
+		return stageDao.nbStage();
+	}
     
 	public Stage updateStage(Long stageId,Stage stageDetails) {
         Stage stage = stageDao.getOne(stageId);

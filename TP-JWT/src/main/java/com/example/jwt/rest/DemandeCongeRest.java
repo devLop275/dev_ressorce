@@ -32,6 +32,16 @@ public class DemandeCongeRest {
 
 	
 
+	//public DemandeConge save(@RequestBody DemandeConge demandeConge,@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+		
+		//return demandeCongeImpl.save(demandeConge,file);
+	//}
+	
+	/*
+	 * @PostMapping("/") public DemandeConge save(@RequestBody DemandeConge
+	 * demandeConge, @RequestParam("file") MultipartFile file) { return
+	 * demandeCongeImpl.save(demandeConge, file); }
+	 */
 
 	/*
 	 * @PostMapping("/") public DemandeConge save(@RequestBody DemandeConge
@@ -46,6 +56,11 @@ public class DemandeCongeRest {
 	//public DemandeConge save(@RequestBody DemandeConge demandeConge) {
 		//return demandeCongeImpl.save(demandeConge);
 	//}
+	
+	@PostMapping("/") 
+	public DemandeConge save(@RequestBody DemandeConge demandeConge) {
+		return demandeCongeImpl.save(demandeConge);
+	}
 
 	
 	
@@ -55,11 +70,18 @@ public class DemandeCongeRest {
 		return demandeCongeImpl.findAll();
 	}
 	
-
-    @PostMapping("/")
-    public DemandeConge save(@RequestBody DemandeConge demandeConge,@RequestParam("file") MultipartFile file) throws JsonParseException, JsonMappingException, Exception {
-		return demandeCongeImpl.save(demandeConge);
+	@GetMapping("/count/")
+	public int nbConges() {
+		return demandeCongeImpl.nbConges();
 	}
+	
+
+	/*
+	 * @PostMapping("/") public DemandeConge save(@RequestBody DemandeConge
+	 * demandeConge,@RequestParam("file") MultipartFile file) throws
+	 * JsonParseException, JsonMappingException, Exception { return
+	 * demandeCongeImpl.save(demandeConge); }
+	 */
 
 
 	@Transactional

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab1c3632-d62b-4e88-9abe-a0cbd86c2554">
+	<field name="id" class="java.lang.Long">
+	</field>
+	<field name="nom" class="java.lang.String">
+	</field>
+	<field name="prenom" class="java.lang.String">
+	</field>
+	<field name="cin" class="java.lang.String">
+	</field>
+	<field name="adresse" class="java.lang.String">
+	</field>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="nom">
+		<groupExpression><![CDATA[$F{nom}]]></groupExpression>
+	</group>
+	<group name="prenom">
+		<groupExpression><![CDATA[$F{prenom}]]></groupExpression>
+	</group>
+	<group name="cin">
+		<groupExpression><![CDATA[$F{cin}]]></groupExpression>
+	</group>
+	<group name="adresse">
+		<groupExpression><![CDATA[$F{adresse}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="325" y="0" width="160" height="30" uuid="b2d82c7a-bd82-455a-93a4-f2ee7db8d3c7"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marrakech Le]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="430" y="0" width="180" height="30" uuid="d75472d8-fde7-4942-a617-7690cbcc6d2d"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="70" splitType="Stretch">
+			<textField>
+				<reportElement x="120" y="10" width="380" height="60" uuid="d865c115-7bb3-451e-a7c6-0d13955b5cde"/>
+				<textElement>
+					<font fontName="SansSerif" size="26"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Attestation De Travail"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+		
+	</columnHeader>
+	<detail>
+		<band height="170" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="60" width="550" height="60" uuid="94968124-ff6a-4a54-8995-7b909ddd1d0c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+                <textFieldExpression><![CDATA["Je, soussigné M.ELGHALI SENHAJI,agissant en qualité de gérant de l'entreprise OutsurSys , atteste que M. "+$F{nom} + " " + $F{prenom} +" porteur de la CIN N° : " +$F{cin} + ", travaille au sein de notre societe depuis le 1er Septembre 2013 en qualité de Développeur ."]]></textFieldExpression>
+            </textField>
+			<textField>
+				<reportElement x="0" y="120" width="550" height="50" uuid="c5789a39-8b8e-480d-a7d6-3caff1a62595"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["M. " + $F{nom} + " " + $F{prenom} + " est sous contrat à durée indéterminée (CDI) depuis la date mentionnée ci-dessus et titularisé depuis le 1er Décembre 2013."]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="235" splitType="Stretch">
+			<staticText>
+				<reportElement x="430" y="95" width="130" height="30" uuid="41c15be3-d1c6-4332-a295-dbeda2b78ed8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[M. ELGHALI SENHAJI]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="54" splitType="Stretch"/>
+	</summary>
+</jasperReport>

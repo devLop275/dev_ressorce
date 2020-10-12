@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class EquipeItem {
 
@@ -72,6 +74,7 @@ public class EquipeItem {
 		this.note = note;
 	}
 
+	@JsonIgnore
 	public Stage getStage() {
 		return stage;
 	}

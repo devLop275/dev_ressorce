@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab1c3632-d62b-4e88-9abe-a0cbd86c2554">
+	<field name="id" class="java.lang.Long">
+	</field>
+	<field name="nomEnc" class="java.lang.String">
+	</field>
+	<field name="prenomEnc" class="java.lang.String">
+	</field>
+	<field name="dateDebut" class="java.util.Date">
+	</field>
+	<field name="dateFin" class="java.util.Date">
+	</field>
+	<field name="nomSt" class="java.lang.String">
+	</field>
+	<field name="prenomSt" class="java.lang.String">
+	</field>
+	<field name="departement" class="java.lang.String">
+	</field>
+	<field name="designation" class="java.lang.String">
+	</field>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="nomEnc">
+		<groupExpression><![CDATA[$F{nomEnc}]]></groupExpression>
+	</group>
+	<group name="prenomEnc">
+		<groupExpression><![CDATA[$F{prenomEnc}]]></groupExpression>
+	</group>
+	<group name="dateDebut">
+		<groupExpression><![CDATA[$F{dateDebut}]]></groupExpression>
+	</group>
+	<group name="dateFin">
+		<groupExpression><![CDATA[$F{dateFin}]]></groupExpression>
+	</group>
+	<group name="nomSt">
+		<groupExpression><![CDATA[$F{nomSt}]]></groupExpression>
+	</group>
+	<group name="prenomSt">
+		<groupExpression><![CDATA[$F{prenomSt}]]></groupExpression>
+	</group>
+	<group name="departement">
+		<groupExpression><![CDATA[$F{departement}]]></groupExpression>
+	</group>
+	<group name="designation">
+		<groupExpression><![CDATA[$F{designation}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="325" y="0" width="160" height="30" uuid="b2d82c7a-bd82-455a-93a4-f2ee7db8d3c7"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marrakech Le]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="430" y="0" width="180" height="30" uuid="d75472d8-fde7-4942-a617-7690cbcc6d2d"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="70" splitType="Stretch">
+			<textField>
+				<reportElement x="120" y="10" width="380" height="60" uuid="d865c115-7bb3-451e-a7c6-0d13955b5cde"/>
+				<textElement>
+					<font fontName="SansSerif" size="26"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Attestation De Stage"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+		
+	</columnHeader>
+	<detail>
+		<band height="180" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="20" width="552" height="100" uuid="94968124-ff6a-4a54-8995-7b909ddd1d0c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Je, soussigné M. " + $F{nomEnc} + " " +$F{prenomEnc} + " " + $F{designation} +" , au sein de l’entreprise KechTrip sise Résidence Attrani - Avenue Hassan II - Guéliz 40 010 Marrakech , atteste par la présente que M. "+ $F{nomSt} + " " +$F{prenomSt} + "a réalisé un stage dans le département " + $F{departement} +" de notre entreprise du " + $F{dateDebut} + "  au " +  $F{dateFin}+". Durant son stage, il a montré capacités évidentes d’initiatives et d'adaptation aux différents types de tâches qui lui ont été demandées d'assurer."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="110" width="550" height="50" uuid="c5789a39-8b8e-480d-a7d6-3caff1a62595"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cette attestation est délivrée à l’intéressé pour valoir ce que de droit."]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="380" y="20" width="180" height="30" uuid="f3801faf-1b46-4a91-b15f-375dd004b915"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["M. "+$F{nomEnc}+" "+$F{prenomEnc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="54" splitType="Stretch"/>
+	</summary>
+</jasperReport>
