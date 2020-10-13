@@ -2,6 +2,7 @@ package com.example.jwt.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -135,4 +136,9 @@ public class UserServiceImpl implements UserDetailsService {
         return ResponseEntity.ok(updatedUser);
     }
 
+	public Optional<User> findByEmail(String email) {
+		return userDao.findByEmail(email);
+	}
+
+    
 }

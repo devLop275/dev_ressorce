@@ -126,6 +126,7 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+    @JsonIgnore
     @Override
     public String getUsername() {
         return email;

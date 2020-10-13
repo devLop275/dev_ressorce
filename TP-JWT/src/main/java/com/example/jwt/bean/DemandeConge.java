@@ -13,7 +13,6 @@ public class DemandeConge {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
 	private Long id;
 	@ManyToOne
 	private Employee employee;
@@ -26,7 +25,7 @@ public class DemandeConge {
 	private int duree;
 	private String horaire;
 	private String raison;
-	private String certificat;
+	private String nomCertificat;
 	private String status;
 	
 	public Long getId() {
@@ -78,18 +77,17 @@ public class DemandeConge {
 	public void setRaison(String raison) {
 		this.raison = raison;
 	}
-	public String getCertificat() {
-		return certificat;
-	}
-	public void setCertificat(String certificat) {
-		this.certificat = certificat;
-	}
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+	public String getNomCertificat() {
+		return nomCertificat;
+	}
+	public void setNomCertificat(String nomCertificat) {
+		this.nomCertificat = nomCertificat;
+	}
 	
 }

@@ -1,9 +1,12 @@
 package com.example.jwt.rest;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.jwt.bean.AuthResponse;
+import com.example.jwt.bean.User;
 import com.example.jwt.service.UserServiceImpl;
 
 @RestController
@@ -38,4 +41,11 @@ public class AuthenticationRest {
 	public String signin(@PathVariable String test) {
 		return test;
 	}
+
+	@GetMapping("/email/{email}")
+	public Optional<User> findByEmail(@PathVariable String email) {
+		return userService.findByEmail(email);
+	}
+	
+	
 }

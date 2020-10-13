@@ -59,7 +59,7 @@ public class Stage {
 		this.encadrent = encadrent;
 	}
 
-	@JsonIgnore
+
 	public List<EquipeItem> getEquipeItems() {
 		return equipeItems;
 	}
