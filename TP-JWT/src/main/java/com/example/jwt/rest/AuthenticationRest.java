@@ -47,5 +47,7 @@ public class AuthenticationRest {
 		return userService.findByEmail(email);
 	}
 	
-	
+//	public Optional<User> findByEmail(String email) {
+//		return userDao.findByEmail(email);
+//	}
 }

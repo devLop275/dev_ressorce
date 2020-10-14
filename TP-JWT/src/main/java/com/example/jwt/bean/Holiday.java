@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 @Entity
 public class Holiday {
@@ -16,51 +17,56 @@ public class Holiday {
 	private Long id;
 	
 	private String holidayName;
+	@Temporal(javax.persistence.TemporalType.DATE)
+	private Date fromDate;
+	@Temporal(javax.persistence.TemporalType.DATE)
+	private Date toDate;
 	
-	private Date from_date;
-	
-	private Date to_date;
-	
-	private Number number_of_days;
-	
-	private int year;
-	
+	private Number numberDay;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Date getFrom_date() {
-		return from_date;
-	}
-	public void setFrom_date(Date from_date) {
-		this.from_date = from_date;
-	}
-	public Date getTo_date() {
-		return to_date;
-	}
-	public void setTo_date(Date to_date) {
-		this.to_date = to_date;
-	}
-	public Number getNumber_of_days() {
-		return number_of_days;
-	}
-	public void setNumber_of_days(Number number_of_days) {
-		this.number_of_days = number_of_days;
-	}
-	public int getYear() {
-		return year;
-	}
-	public void setYear(int year) {
-		this.year = year;
-	}
+
 	public String getHolidayName() {
 		return holidayName;
 	}
+
 	public void setHolidayName(String holidayName) {
 		this.holidayName = holidayName;
 	}
+
+	public Date getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(Date fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public Date getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(Date toDate) {
+		this.toDate = toDate;
+	}
+
+	public Number getNumberDay() {
+		return numberDay;
+	}
+
+	public void setNumberDay(Number numberDay) {
+		this.numberDay = numberDay;
+	}
+	
+	
+	
+	
 	
 	
 	

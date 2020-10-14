@@ -15,40 +15,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.jwt.bean.Tache;
-import com.example.jwt.service.TacheImpl;
+import com.example.jwt.bean.Holiday;
+import com.example.jwt.service.HolidayImpl;
 
 @RestController
-@RequestMapping("/tp-jwt/tache")
+@RequestMapping("/tp-jwt/holiday")
 @CrossOrigin(origins = "http://localhost:4200")
-public class TacheRest {
-
+public class HolidayRest {
+	
 	@Autowired
-	private TacheImpl tacheImpl;
+	private HolidayImpl holidayImpl;
 
 	@PostMapping("/")
-	public Tache save( @RequestBody Tache tache) {
-		return tacheImpl.save(tache);
+	public Holiday save(@RequestBody Holiday holiday) {
+		return holidayImpl.save(holiday);
 	}
 
 	@GetMapping("/")
-	public List<Tache> findAll() {
-		return tacheImpl.findAll();
+	public List<Holiday> findAll() {
+		return holidayImpl.findAll();
 	}
 
 	@Transactional
-	@DeleteMapping("/id/{id)")
-	public int deleteByID(@PathVariable Long id) {
-		return tacheImpl.deleteByID(id);
+	@DeleteMapping("/id/{id}")
+	public int deleteById(@PathVariable Long id) {
+		return holidayImpl.deleteById(id);
 	}
 
 	@PutMapping("/update/")
-	public int update(@RequestBody Tache tache) {
-		return tacheImpl.update(tache);
+	public int update(@RequestBody Holiday holiday) {
+		return holidayImpl.update(holiday);
 	}
 	
-	/*
-	 * public Long getId() { return id; } public void setId(Long id) { this.id = id;
-	 * } public String getProjet() { return projet; }
-	 */
+	
+
 }

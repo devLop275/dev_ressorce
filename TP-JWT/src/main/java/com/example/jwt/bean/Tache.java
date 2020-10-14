@@ -34,6 +34,15 @@ public class Tache {
 		this.employee = employee;
 	}
 	
+//	public Long getId() {
+//		return id;
+//	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
+//	public String getProjet() {
+//		return projet;
+//	}
 	
 	
 

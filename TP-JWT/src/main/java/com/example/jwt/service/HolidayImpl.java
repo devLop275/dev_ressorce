@@ -26,8 +26,24 @@ public class HolidayImpl {
 		return holidayDao.findByHolidayName(name);
 	}
 
-	public void deleteById(Long id) {
-		holidayDao.deleteById(id);
+	public int deleteById(Long id) {
+		if(id == null) {
+			return -1;
+		}
+		else {
+			holidayDao.deleteById(id);
+			return 1;
+		}
+		
+	}
+	
+	public int update(Holiday holiday) {
+		if (holidayDao.findByHolidayNameAndIdNot(holiday.getHolidayName() , holiday.getId()) != null) {
+			return -1;
+		} else {
+			holidayDao.save(holiday);
+			return 1;
+		}
 	}
 	
 	

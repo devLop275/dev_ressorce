@@ -135,10 +135,17 @@ public class UserServiceImpl implements UserDetailsService {
         final User updatedUser = userDao.save(user);
         return ResponseEntity.ok(updatedUser);
     }
-
-	public Optional<User> findByEmail(String email) {
+    
+    public Optional<User> findByEmail(String email) {
 		return userDao.findByEmail(email);
 	}
 
+	/*
+	 * public Optional<User> findByEmail(String email) { return
+	 * userDao.findByEmail(email); }
+	 * 
+	 * public Long getId() { return id; } public void setId(Long id) { this.id = id;
+	 * } public String getProjet() { return projet; }
+	 */
     
 }

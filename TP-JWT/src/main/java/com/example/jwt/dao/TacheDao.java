@@ -7,5 +7,9 @@ import com.example.jwt.bean.Tache;
 public interface TacheDao extends JpaRepository<Tache, Long> {
 	
 	public Tache findByProjetAndIdNot(String projet,Long id);
+	/*
+	 * public Long getId() { return id; } public void setId(Long id) { this.id = id;
+	 * } public String getProjet() { return projet; }
+	 */
 
 }
