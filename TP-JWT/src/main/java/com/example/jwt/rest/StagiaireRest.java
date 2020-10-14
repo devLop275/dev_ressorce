@@ -58,8 +58,8 @@ public class StagiaireRest {
 
 	@Transactional
 	@DeleteMapping("/delete/id/{id}")
-	public void deleteById(@PathVariable Long id) {
-		stagiaireService.deleteById(id);
+	public int deleteById(@PathVariable Long id) {
+		return stagiaireService.deleteById(id);
 	}
 	
 	@PutMapping("/update/{id}")

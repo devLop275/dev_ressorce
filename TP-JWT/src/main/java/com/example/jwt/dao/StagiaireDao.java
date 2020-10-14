@@ -13,8 +13,6 @@ public interface StagiaireDao extends JpaRepository<Stagiaire, Long> {
 
 	public Stagiaire findByNomAndIdNot(String nom,Long id);
 	
-	public void deleteById(Long id);
-	
 	@Query("SELECT COUNT(s) FROM Stagiaire s")
 	public int nbStagiaire();
 }

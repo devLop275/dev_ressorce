@@ -33,8 +33,14 @@ public class StagiaireImpl {
 		return stagiaireDao.findByNom(nom);
 	}
 
-	public void deleteById(Long id) {
-		stagiaireDao.deleteById(id);
+	public int deleteById(Long id) {
+		if(id == null) {
+			return -1;
+		}
+		else {
+			stagiaireDao.deleteById(id);
+			return 1;
+		}
 	}
 	
 	public Stagiaire updateStagiaire(Long employeeId,Stagiaire stagiaireDetails) {
