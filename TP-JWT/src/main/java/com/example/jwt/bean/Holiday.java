@@ -21,9 +21,8 @@ public class Holiday {
 	private Date fromDate;
 	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date toDate;
+	private float numberDay;
 	
-	private Number numberDay;
-
 	public Long getId() {
 		return id;
 	}
@@ -56,18 +55,13 @@ public class Holiday {
 		this.toDate = toDate;
 	}
 
-	public Number getNumberDay() {
+	public float getNumberDay() {
 		return numberDay;
 	}
 
-	public void setNumberDay(Number numberDay) {
+	public void setNumberDay(float numberDay) {
 		this.numberDay = numberDay;
 	}
-	
-	
-	
-	
-	
-	
+		
 	
 }
