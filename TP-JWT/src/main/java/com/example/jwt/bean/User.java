@@ -3,6 +3,8 @@ package com.example.jwt.bean;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class User implements UserDetails {
     private String nom;
     private String prenom;
     private String email;
+    @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
     private String adresse;
     private String ville;
@@ -116,8 +119,7 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
-    @JsonIgnore
-    @Override
+    
     public String getPassword() {
         return password;
     }
